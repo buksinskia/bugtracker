@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Bug Tracker</h1>
+    <p class="lead">Please choose an option:</p>
+    <ul class="list-group">
+        <li class="list-group-item"><a th:href="@{/bugs}" class="text-dark">Manage Bugs</a></li>
+        <li class="list-group-item"><a th:href="@{/projects}" class="text-dark">Manage Projects</a></li>
+        <li class="list-group-item"><a th:href="@{/users}" class="text-dark">Manage Users</a></li>
+    </ul>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Bug</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<div class="container">
+    <h1>Edit Bug</h1>
+    <form th:action="@{'/bugs/edit/' + ${bug.id}}" th:object="${bug}" method="post">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" th:field="*{title}"/>
+            <p class="error-message" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</p>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" th:field="*{description}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="project">Project:</label>
+            <select class="form-control" id="project" th:field="*{project.id}">
+                <option th:each="project : ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="assignedUser">Assigned User:</label>
+            <select class="form-control" id="assignedUser" th:field="*{assignedUser.id}">
+                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.username}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select class="form-control" id="status" th:field="*{status.id}">
+                <option th:each="status : ${statuses}" th:value="${status.id}" th:text="${status.name}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

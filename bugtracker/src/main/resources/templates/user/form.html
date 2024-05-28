@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add User</title>
+</head>
+<body>
+<h1>Add User</h1>
+<form th:action="@{/users}" th:object="${user}" method="post">
+  <div>
+    <label for="username">Username</label>
+    <input type="text" id="username" th:field="*{username}"/>
+    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="email" id="email" th:field="*{email}"/>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</p>
+  </div>
+  <div>
+    <button type="submit">Save</button>
+  </div>
+</form>
+</body>
+</html>

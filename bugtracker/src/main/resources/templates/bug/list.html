@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bugs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Bugs</h1>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Project</th>
+            <th>Assigned User</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bug : ${bugs}">
+            <td th:text="${bug.id}"></td>
+            <td th:text="${bug.title}"></td>
+            <td th:text="${bug.description}"></td>
+            <td th:text="${bug.project.name}"></td>
+            <td th:text="${bug.assignedUser.username}"></td>
+            <td th:text="${bug.status.name}"></td>
+            <td>
+                <a th:href="@{'/bugs/edit/' + ${bug.id}}" class="btn btn-warning btn-sm">Edit</a>
+                <a th:href="@{'/bugs/delete/' + ${bug.id}}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this bug?')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/bugs/new" class="btn btn-primary">Add New Bug</a>
+    <br><br>
+    <a href="/" class="btn btn-secondary">Return</a>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
